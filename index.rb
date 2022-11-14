@@ -15,7 +15,7 @@ end
 
 def string_scanner(string)
     arr =[]
-    
+    string.downcase!
     ##scanning the sting in as much as possible way ##
 
     arr.push(string.scan(/./))
