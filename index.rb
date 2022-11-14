@@ -9,33 +9,18 @@
 
 ##script##
 def substring(string=gets.chomp)
-    p hash_creation(string_scanner(string))
+    string = string.downcase
+    p hash_creation(string)
 end
 
-
-def string_scanner(string)
-    arr =[]
-    string.downcase!
-    ##scanning the sting in as much as possible way ##
-
-    arr.push(string.scan(/./))
-    arr.push(string.scan(/(.)(...)/))
-    arr.push(string.scan(/(.)(..)(...)/))
-    arr.push(string.scan(/\w+/))
-    arr.push(string.scan(/.../))
-    arr.push(string.scan(/(..)/))
-    arr = arr.flatten.map{|string| string.strip}
-end
-
-def hash_creation(arr)
+def hash_creation(string)
     hash = Hash.new()
     value = 0 
-    arr.each do |string|
-        if @dictionary.include?(string)
-            hash[string] = value+1
+    @dictionary.each do |word|
+        result = string.scan(word).length
+        hash[word] = result if result != 0 
         end
-    end
     hash
 end
 
-substring()
+substring("going down")
